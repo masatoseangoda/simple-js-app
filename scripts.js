@@ -1,5 +1,6 @@
 let pokemonRepositry=(function() {
 let pokemonList = [];
+let pokemon = "";
 pokemonList = [
     { name: "Bulbasaur", 
     height:0.7, 
