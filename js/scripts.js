@@ -1,5 +1,6 @@
 let pokemonRepositry=(function() {
 let pokemonList = [];
+let pokemon = "";
 pokemonList = [
     { name: "Bulbasaur", 
     height:0.7, 
@@ -16,11 +17,12 @@ pokemonList = [
 ];
 
 function add(item){
-    if(typeof item === "object"){
-    pokemonList.push(item)
-   }
-   else alert("not possible")
-};
+    if (typeof pokemon === 'object' && typeof pokemon !== null) {
+        pokemonList.push(item);
+      } else {
+        console.log('you need an object');
+      }
+}
 
 function getAll(){
     return pokemonList
@@ -29,20 +31,26 @@ function getAll(){
 return {
     add: add,
     getAll: getAll
-}
+};
 })();
 
-function loopFunction(pokemonList){
+pokemonRepository.forEach(function(pokemon){
     if(pokemon.height > 1){
-        document.write(`<h1>${pokemonList.name}</h1> <p><strong> height:</strong> ${pokemonList.height} WOW! Is Bigger than one Meter!</p><br>`)
+        document.write(`${(pokemon.name)} - Height: ${pokemon.height}cm - Type: ${pokemon.type}  - Now that is large! <br/> <br/>`);
     }
     else{
-        document.write(`<h1>${pokemonList.name}</h1> <p><strong> height:</strong> ${pokemonList.height} Meter</p> <br>`)
+        document.write(`${(pokemon.name)} - Height: ${pokemon.height}cm - Type: ${pokemon.type} <br/> <br/>`);
     }
-}
+})
 
 function findgrass(pokemonList){
     if(pokemonList.type === "grass"){
         return pokemon
     }
 }
+
+pokemonRepository.getAll().forEach(loopFunction);
+
+let grass=pokemonRepository.getAll().filter(findGrass);
+
+console.log(grass)
