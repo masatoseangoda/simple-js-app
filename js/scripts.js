@@ -1,22 +1,25 @@
 let pokemonRepositry=(function() {
 let pokemonList = [];
-let pokemon = "";
-pokemonList = [
-    { name: "Bulbasaur", 
-    height:0.7, 
+let pokemon= "";
+let pokemonList = [
+    { 
+        name: "Bulbasaur", 
+    height:"0.7", 
     type: "grass"
 },
-    { name: "Wartortle" , 
+    { 
+        name: "Wartortle" , 
     height: "1" ,
     type: "water"
 },
-    {name: "Beedrill",
+    {
+        name: "Beedrill",
      height: "1", 
      type: "bug"
     }
 ];
 
-function add(item){
+function add(pokemon){
     if (typeof pokemon === 'object' && typeof pokemon !== null) {
         pokemonList.push(item);
       } else {
@@ -25,7 +28,7 @@ function add(item){
 }
 
 function getAll(){
-    return pokemonList
+    return pokemonList;
 }
 
 return {
@@ -34,14 +37,14 @@ return {
 };
 })();
 
-pokemonRepository.forEach(function(pokemon){
-    if(pokemon.height > 1){
-        document.write(`${(pokemon.name)} - Height: ${pokemon.height}cm - Type: ${pokemon.type}  - Now that is large! <br/> <br/>`);
+pokemonRepository.getAll().forEach(function(pokemon) {
+    if(pokemon.height > .5){
+    document.write('${(pokemon.name)} - Height: ${pokemon.height}cm - Type: ${pokemon.type} - Now that is large! <br/> <br/>');
     }
     else{
-        document.write(`${(pokemon.name)} - Height: ${pokemon.height}cm - Type: ${pokemon.type} <br/> <br/>`);
+    document.write('${(pokemon.name)} - Height: ${pokemon.height}cm - Type: ${pokemon.type} <br/> <br/>');
     }
-})
+    })
 
 function findgrass(pokemonList){
     if(pokemonList.type === "grass"){
