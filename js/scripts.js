@@ -1,15 +1,48 @@
+let pokemonRepositry=(function() {
 let pokemonList = [];
 pokemonList = [
-    { name: "Bulbasaur", height:0.7, type: ["grass"]},
-    { name: "Wartortle" , height: "1" ,type:["water"]},
-    {name: "Beedrill", height: "1", type: ["bug"]}
-]
+    { name: "Bulbasaur", 
+    height:0.7, 
+    type: "grass"
+},
+    { name: "Wartortle" , 
+    height: "1" ,
+    type: "water"
+},
+    {name: "Beedrill",
+     height: "1", 
+     type: "bug"
+    }
+];
 
-let pokemonSizeThreshold = 0.8;
+function add(item){
+    if(typeof item === "object"){
+    pokemonList.push(item)
+   }
+   else alert("not possible")
+};
 
-for( i = 0; i <= pokemonList.length; i++) {
-    let pokemonString = `${pokemonList[i].name} ( Height: ${ pokemonList[i].height} )`;
-    let pokemon = pokemonList[i].height >= pokemonSizeThreshold ? `<p> ${pokemonString} - Wow, that’s big! </p>` : `<p> ${pokemonString} </p>`;
-    document.write(pokemon);
+function getAll(){
+    return pokemonList
 }
 
+return {
+    add: add,
+    getAll: getAll
+}
+})();
+
+function loopFunction(pokemonList){
+    if(pokemon.height > 1){
+        document.write(`<h1>${pokemonList.name}</h1> <p><strong> height:</strong> ${pokemonList.height} WOW! Is Bigger than one Meter!</p><br>`)
+    }
+    else{
+        document.write(`<h1>${pokemonList.name}</h1> <p><strong> height:</strong> ${pokemonList.height} Meter</p> <br>`)
+    }
+}
+
+function findgrass(pokemonList){
+    if(pokemonList.type === "grass"){
+        return pokemon
+    }
+}
