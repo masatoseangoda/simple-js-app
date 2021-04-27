@@ -39,6 +39,24 @@ let pokemonRepository=(function() {
     });
     }
     
+    async function loadList() {
+        showLoadingMessage();
+        try {
+          const response = await fetch(apiUrl);
+          const json = await response.json();
+          json.results.forEach(function (item) {
+            let pokemon = {
+              name: item.name,
+              detailsUrl: item.url,
+            };
+            addPokemon(pokemon);
+          });
+          hideLoadingMessage();
+        } catch (e) {
+          console.error(e);
+          hideLoadingMessage();
+        }
+      }
 
       async function loadDetails(pokemon) {
         showLoadingMessage();
@@ -61,7 +79,16 @@ let pokemonRepository=(function() {
         }
       }
 
-      
+      function showLoadingMessage() {
+        console.log('Loading Data...');
+        let pokemonList = document.querySelector('.pokemon-list');
+        //pokemonList.insertBefore(message, pokemonList.firstChild);
+      }
+    
+      function hideLoadingMessage() {
+        console.log('Data successfully loaded!');
+        let pokemonList = document.querySelector('.pokemon-list');
+      }
 
       function remove() {
         console.log(
