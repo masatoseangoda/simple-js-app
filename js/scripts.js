@@ -20,7 +20,7 @@ let pokemonRepository=(function() {
     return pokemonList;
     }
     
-    function pokedexListener(button, pokemon) {
+    function pokemonListListener(button, pokemon) {
         button.addEventListener('click', function () {
           showDetails(pokemon);
         });
@@ -39,24 +39,6 @@ let pokemonRepository=(function() {
     });
     }
     
-    async function loadList() {
-        showLoadingMessage();
-        try {
-          const response = await fetch(apiUrl);
-          const json = await response.json();
-          json.results.forEach(function (item) {
-            let pokemon = {
-              name: item.name,
-              detailsUrl: item.url,
-            };
-            add(pokemon);
-          });
-          hideLoadingMessage();
-        } catch (e) {
-          console.error(e);
-          hideLoadingMessage();
-        }
-      }
 
       async function loadDetails(pokemon) {
         showLoadingMessage();
@@ -79,20 +61,7 @@ let pokemonRepository=(function() {
         }
       }
 
-      function showLoadingMessage() {
-        console.log('Loading Data...');
-        let pokedex = document.querySelector('#pokedex');
-        let message = document.createElement('div');
-        message.id = 'message';
-        pokedex.insertBefore(message, pokedex.firstChild);
-      }
-    
-      function hideLoadingMessage() {
-        console.log('Data successfully loaded!');
-        let pokedex = document.querySelector('#pokedex');
-        let message = document.querySelector('#message');
-        pokedex.removeChild(message);
-      }
+      
 
       function remove() {
         console.log(
